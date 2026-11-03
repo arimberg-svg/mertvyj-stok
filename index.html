@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мёртвый сток: как смотреть и читать</title>
+  <meta name="description" content="Как увидеть розовую строку мёртвого стока в подборе и как читать 7% в отчёте по мотивации.">
+  <meta name="published" content="2026-10-30">
+  <meta name="theme-color" content="#4208A8">
+  <style>
+    :root {
+      --um: #4208A8;
+      --gray: #CCCCCC;
+      --ink: #111111;
+      --paper: #ffffff;
+      --soft: #f6f4fa;
+      --line: rgba(66, 8, 168, 0.16);
+      --muted: #5c5278;
+      --font: "Code Next", "Code Next Trial", Arial, Helvetica, sans-serif;
+      --head: "Code Next", "Code Next Trial", "Arial Black", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: var(--font);
+      font-size: 18px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a { color: var(--um); }
+    img { max-width: 100%; height: auto; }
+    .top {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 20px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .brand img {
+      width: min(280px, 70vw);
+      min-width: 250px;
+      height: auto;
+      display: block;
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .header-end { display: flex; align-items: center; margin-left: auto; }
+    .to-home {
+      color: var(--um);
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .hero { background: var(--um); color: #fff; }
+    .hero .wrap { padding: 28px 20px 32px; }
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--gray);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-line {
+      margin: 0 0 14px;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .hero h1 {
+      margin: 0 0 12px;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4.4vw, 2.7rem);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+    header.top h1 {
+      margin: 0;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 1.28rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--um);
+    }
+    header.top .sub {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+    .hero p.lead {
+      margin: 0;
+      max-width: 40em;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    main { padding: 22px 0 56px; }
+    .jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+    }
+    .jump a {
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+    .fact {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 12px 32px rgba(66, 8, 168, 0.08);
+    }
+    .fact .name {
+      margin: 0;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+      color: var(--um);
+    }
+    .fact .coef {
+      margin: 6px 0 8px;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: var(--um);
+    }
+    .fact p { margin: 0; }
+    section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 22px 8px;
+      margin: 0 0 16px;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    h2 {
+      margin: 0 0 12px;
+      color: var(--um);
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+    }
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    p { margin: 0 0 12px; }
+    ol, ul { margin: 0 0 14px; padding-left: 1.25em; }
+    li { margin: 0 0 8px; }
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px 6px;
+      background: var(--soft);
+    }
+    .step b {
+      display: block;
+      color: var(--um);
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .legend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 16px;
+    }
+    .swatch {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .swatch .chip {
+      height: 18px;
+    }
+    .swatch.dead .chip { background: #FFE4E1; }
+    .swatch.cursor .chip { background: #FDE68F; }
+    .swatch div.body { padding: 12px 14px 10px; }
+    .swatch strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .swatch p { margin: 0; }
+    .money {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0 0 16px;
+    }
+    .money article {
+      border-radius: 14px;
+      padding: 14px 14px 10px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+    .money article.total {
+      background: var(--um);
+      color: #fff;
+      border-color: var(--um);
+    }
+    .money strong {
+      display: block;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+      color: var(--um);
+    }
+    .money article.total strong,
+    .money article.total span { color: #fff; }
+    .money span { color: var(--muted); font-size: 15px; }
+    .calc {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 16px;
+      align-items: end;
+      margin: 0 0 16px;
+    }
+    label { display: block; font-weight: 700; margin-bottom: 6px; }
+    input[type="number"] {
+      width: 100%;
+      font: inherit;
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--um);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 16px;
+      font-size: 16px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--um);
+      color: #fff;
+      font-weight: 700;
+    }
+    td.num, th.num { text-align: right; white-space: nowrap; }
+    .mark { background: rgba(66, 8, 168, 0.1); font-weight: 700; }
+    .shot { margin: 0 0 16px; max-width: 100%; }
+    .shot .scroll {
+      overflow-x: auto;
+      max-width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .shot img { display: block; width: auto; max-width: none; }
+    .shot.fit .scroll img { width: 100%; max-width: 100%; }
+    figcaption {
+      margin: 8px 0 4px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .note {
+      border-left: 4px solid var(--um);
+      padding: 2px 0 2px 14px;
+      margin: 0 0 14px;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      padding-bottom: 8px;
+    }
+    @media (max-width: 800px) {
+      .facts, .money, .steps, .calc, .legend { grid-template-columns: 1fr; }
+      .top { flex-wrap: wrap; align-items: center; }
+      header.top h1 { font-size: 1.05rem; }
+      .brand img { width: 250px; min-width: 250px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="https://akademia.um-ural.ru/">
+      <img class="logo" src="assets/logo.png" alt="У Михалыча" width="280" height="35">
+      <span class="brand-text">
+        <h1>Академия УМ</h1>
+        <p class="sub">Мёртвый сток</p>
+      </span>
+    </a>
+    <div class="header-end">
+      <a class="to-home" href="https://akademia.um-ural.ru/">к Академии</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <p class="kicker">Розница</p>
+      <p class="hero-line">Делаем мир крепче</p>
+      <h1>Мёртвый сток виден розовой строкой</h1>
+      <p class="lead">Товар давно лежит в вашем магазине и после последнего прихода не продавался. В подборе он бледно-розовый. За продажу в отчёте появляется 7% от его цены. Ниже: где это смотреть и как читать сумму.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <nav class="jump" aria-label="Разделы">
+        <a href="#minuta">За минуту</a>
+        <a href="#cveta">Два цвета</a>
+        <a href="#gde">Где смотреть</a>
+        <a href="#summa">Как читается сумма</a>
+        <a href="#spisok">Откуда список</a>
+      </nav>
+
+      <section id="minuta">
+        <h2>За одну минуту</h2>
+        <p>В программе такой товар называется мёртвый сток. Список считается по магазину: в соседней точке тот же товар может быть обычным.</p>
+        <div class="facts">
+          <article class="fact">
+            <p class="name">Срок</p>
+            <p class="coef">250 дней</p>
+            <p>Товар пришёл в ваш магазин 250 дней назад или раньше. После этого прихода его у вас не продавали.</p>
+          </article>
+          <article class="fact">
+            <p class="name">В подборе</p>
+            <p class="coef">Розовая</p>
+            <p>Так строка подсвечена в торговле и на кассе. На кассе у неё ещё стоит галочка.</p>
+          </article>
+          <article class="fact">
+            <p class="name">В отчёте</p>
+            <p class="coef">7%</p>
+            <p>Доля от цены проданного товара. В столбце сумма уже посчитана.</p>
+          </article>
+        </div>
+        <p class="note">Для покупателя цена обычная. Цвет строки виден только нам. Если товар закрывает его задачу, предложите его. Если не подходит, не предлагайте.</p>
+      </section>
+
+      <section id="cveta">
+        <h2>Два цвета в подборе</h2>
+        <p>Сначала отличите цвета. Иначе легко принять выбранную строку за мёртвый сток. Ниже те же оттенки, что в программе.</p>
+        <div class="legend">
+          <article class="swatch dead">
+            <div class="chip" aria-hidden="true"></div>
+            <div class="body">
+              <strong>Мёртвый сток</strong>
+              <p>Бледно-розовая строка. За продажу в отчёте будет 7%.</p>
+            </div>
+          </article>
+          <article class="swatch cursor">
+            <div class="chip" aria-hidden="true"></div>
+            <div class="body">
+              <strong>Выбранная строка</strong>
+              <p>Жёлтым подсвечено то, на чём стоит курсор. К премии это не относится.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="gde">
+        <h2>Где смотреть</h2>
+        <div class="steps">
+          <article class="step">
+            <b>1. Торговля</b>
+            <p>Заказ клиента и помощник продаж. Розовая строка в списке наименований.</p>
+          </article>
+          <article class="step">
+            <b>2. Касса</b>
+            <p>Та же розовая строка. Справа столбец «Мертвый сток» и галочка.</p>
+          </article>
+          <article class="step">
+            <b>3. Отчёт</b>
+            <p>«Планы и выручка по продавцам». Сумма в правом столбце.</p>
+          </article>
+        </div>
+
+        <h3>Подбор в торговле</h3>
+        <p>Так товар подбирают в заказ клиента и в помощнике продаж.</p>
+        <figure class="shot">
+          <div class="scroll">
+            <img src="img/podbor-torgovlya.png" alt="Подбор в торговле: розовая строка сверла и жёлтая выбранная дрель" width="847" height="402">
+          </div>
+          <figcaption>Подбор в торговле. Розовая строка внизу: сверло по металлу RENNBOHR. Жёлтая строка выше, это выбранная дрель. К мёртвому стоку она не относится.</figcaption>
+        </figure>
+
+        <h3>Подбор на кассе</h3>
+        <p>Пометка на кассу приходит из торговли. Если в торговле строка розовая, на кассе она станет розовой после обмена.</p>
+        <figure class="shot">
+          <div class="scroll">
+            <img src="img/podbor-kassa.png" alt="Подбор на кассе: розовая строка скобоудалителя и галочка в столбце Мертвый сток" width="1380" height="401">
+          </div>
+          <figcaption>Подбор на кассе. Розовая строка: универсальный стальной скобоудалитель KRAFTOOL, цена 583 ₽. В столбце «Мертвый сток» стоит галочка.</figcaption>
+        </figure>
+
+        <h3>Отчёт «Планы и выручка по продавцам»</h3>
+        <p>Откройте отчёт «Планы и выручка по продавцам». В поле «Подразделение» выберите свой магазин, поставьте период и нажмите «Сформировать».</p>
+        <p>Нужный столбец справа. Он называется «Продажи мертвого стока». Сумма стоит на строке магазина и на строке продавца. Ниже могут быть чеки: по ним видно, из каких продаж она сложилась.</p>
+        <figure class="shot">
+          <div class="scroll">
+            <img src="img/otchet.png" alt="Отчёт Планы и выручка по продавцам, справа столбец Продажи мертвого стока" width="1412" height="417">
+          </div>
+          <figcaption>Свой магазин и свою строку ищите слева. Сумму мёртвого стока смотрите в правом столбце. Картинку можно прокрутить в сторону.</figcaption>
+        </figure>
+
+        <h3>Соседние столбцы</h3>
+        <p>Рядом стоят другие начисления. Мёртвый сток читайте только в последнем столбце.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Столбец в отчёте</th>
+              <th>Что в нём</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Премия личные продажи</td>
+              <td>Премия за личные продажи. Лига магазина в ней уже учтена.</td>
+            </tr>
+            <tr>
+              <td>Лига магазина</td>
+              <td>Лига вашей точки: тяжеловесы, средневесы или легковесы.</td>
+            </tr>
+            <tr>
+              <td>Премия, товары с повышенным %</td>
+              <td>Другая премия. Это не мёртвый сток.</td>
+            </tr>
+            <tr>
+              <td class="mark">Продажи мертвого стока</td>
+              <td class="mark">7% за проданный мёртвый сток. Смотрите этот столбец.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="summa">
+        <h2>Как читается сумма</h2>
+        <p>Берётся цена товара из мёртвого стока. От неё считается 7%. В отчёт попадает уже готовая цифра за выбранный период. Умножать в уме ничего не нужно.</p>
+        <div class="calc">
+          <div>
+            <label for="price">Цена товара, ₽</label>
+            <input id="price" type="number" min="0" step="1" value="583" inputmode="decimal">
+          </div>
+          <p>Подставьте цену со строки. Справа будет сумма, которая встанет в отчёт за эту позицию. Если продаж несколько, в столбце они уже сложены.</p>
+        </div>
+        <div class="money">
+          <article>
+            <span>Цена на кассе</span>
+            <strong id="show-price">583 ₽</strong>
+          </article>
+          <article class="total">
+            <span>7% в отчёте</span>
+            <strong id="show-bonus">40,81 ₽</strong>
+          </article>
+        </div>
+        <p>Пример со снимка кассы: скобоудалитель стоит 583 ₽, за эту позицию в отчёте 40,81 ₽.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Цена товара</th>
+              <th class="num">7% в отчёте</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>500 ₽</td>
+              <td class="num">35 ₽</td>
+            </tr>
+            <tr>
+              <td>1 000 ₽</td>
+              <td class="num">70 ₽</td>
+            </tr>
+            <tr>
+              <td>2 000 ₽</td>
+              <td class="num">140 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="spisok">
+        <h2>Откуда берётся список</h2>
+        <p>Каждый день обработка «Анализ мертвого стока» собирает список заново. В него попадает товар точки, у которого последний приход был 250 дней назад или раньше и после этого прихода продаж не было.</p>
+        <p>Посмотреть список можно в окне «Мертвый сток». На смене продавцу оно не нужно: хватает розовой строки и отчёта. Окно полезно, если надо сверить магазин и наименование.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Столбец</th>
+              <th>Как читать</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Период</td>
+              <td>День, на который товар числится мёртвым стоком.</td>
+            </tr>
+            <tr>
+              <td>Магазин</td>
+              <td>Точка, где он так числится.</td>
+            </tr>
+            <tr>
+              <td>Товар</td>
+              <td>Наименование.</td>
+            </tr>
+          </tbody>
+        </table>
+        <figure class="shot fit">
+          <div class="scroll">
+            <img src="img/registr-okno.png" alt="Окно Мертвый сток: столбцы Период, Магазин и Товар" width="1062" height="709">
+          </div>
+          <figcaption>Окно «Мертвый сток». Три столбца: период, магазин и товар. На снимке список магазина на Московском тракте.</figcaption>
+        </figure>
+        <h3>Проверьте себя</h3>
+        <ol>
+          <li>В подборе нашли бледно-розовую строку и не перепутали её с жёлтой.</li>
+          <li>На кассе у этой строки есть галочка в столбце «Мертвый сток».</li>
+          <li>В отчёте «Планы и выручка по продавцам» открыт правый столбец «Продажи мертвого стока».</li>
+          <li>Сумма в нём уже посчитана: это 7% от цены проданных розовых позиций за период.</li>
+        </ol>
+        <p class="note">Если розовая позиция человеку подходит, предложите её. Свою сумму потом смотрите в правом столбце отчёта.</p>
+      </section>
+
+      <footer>
+        <p>Академия УМ. Мёртвый сток: где смотреть розовую строку и как читать 7%.</p>
+        <p>Пока Академия на паузе, это обучение открыто по этой ссылке.</p>
+      </footer>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var input = document.getElementById("price");
+      var priceEl = document.getElementById("show-price");
+      var bonusEl = document.getElementById("show-bonus");
+      var fmt = new Intl.NumberFormat("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function paint() {
+        var raw = String(input.value).replace(",", ".").replace(/\s/g, "");
+        var n = Number(raw);
+        if (!isFinite(n) || n < 0) n = 0;
+        var bonus = Math.round(n * 7) / 100;
+        priceEl.textContent = fmt.format(n) + " ₽";
+        bonusEl.textContent = fmt.format(bonus) + " ₽";
+      }
+      input.addEventListener("input", paint);
+      paint();
+    })();
+  </script>
+</body>
+</html>
